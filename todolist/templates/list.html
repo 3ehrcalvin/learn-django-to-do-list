@@ -1,0 +1,48 @@
+
+{% extends "index.html" %}
+
+{% block title %} List {% endblock title %}
+
+{% block content %}
+<a href="/form">
+    <button class="cursor-pointer bg-blue-500 hover:bg-blue-400 text-white px-3 py-1 rounded-md w-fit">
+        Add Note
+    </button>
+</a>
+<table class="table-auto w-full border border-black rounded-md">
+    <thead class="bg-gray-500 text-white">
+        <tr>
+            <th>Text</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in list %}
+        <tr>
+            <td>{{data.text}}</td>
+            <td>{{data.due_date}}</td>
+            <td class="flex items-center gap-2 justify-center py-1">
+                {% if not data.is_done %}
+                <button class="cursor-pointer bg-green-500 hover:bg-green-600 text-white flex items-center justify-center p-1 rounded-md">
+                    <span class="material-symbols-outlined">
+                        check
+                    </span>
+                </button>
+                {% endif %}
+                <button class="cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-white flex items-center justify-center p-1 rounded-md">
+                    <span class="material-symbols-outlined">
+                        edit
+                    </span>
+                </button>
+                <button class="cursor-pointer bg-red-500 hover:bg-red-600 text-white flex items-center justify-center p-1 rounded-md">
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
