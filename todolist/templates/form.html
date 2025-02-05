@@ -6,13 +6,18 @@
 
 <form action="{% url 'submit' %}" method="POST" class="flex flex-col justify-center gap-3 border border-dark rounded-md p-3">
     {% csrf_token %}
+
+    {% if id %}
+    <input type="hidden" name="id" value="{{id}}">
+    {% endif %}
+
     <div class="flex flex-col justify-center gap-1">
         <label for="note">Note</label>
-        <input id="note" name="note" type="text" placeholder="Enter note here..." class="outline-none border-b-1 border-dark px-1" required>
+        <input id="note" name="note" type="text" value="{{ text|default:'' }}" placeholder="Enter note here..." class="outline-none border-b-1 border-dark px-1" required>
     </div>
     <div class="flex flex-col justify-center gap-1">
         <label for="due_date">Due Date</label>
-        <input id="due_date" name="due_date" type="date" class="outline-none border-b-1 border-dark px-1" required>
+        <input id="due_date" name="due_date" type="date" value="{{ due_date|default:'' }}" class="outline-none border-b-1 border-dark px-1" required>
     </div>
     <div class="flex items-center gap-2">
         <input type="submit" value="Submit" class="w-fit cursor-pointer bg-blue-500 hover:bg-blue-400 text-white px-3 py-1 rounded-md">

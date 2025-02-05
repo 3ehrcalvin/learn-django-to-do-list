@@ -20,21 +20,25 @@
     <tbody>
         {% for data in list %}
         <tr>
-            <td>{{data.text}}</td>
+            <td class="{% if data.is_done %}line-through{% endif %}" >{{data.text}}</td>
             <td>{{data.due_date}}</td>
-            <td class="flex items-center gap-2 justify-center py-1">
+            <td class="flex items-center gap-2 justify-end py-1">
                 {% if not data.is_done %}
-                <button class="cursor-pointer bg-green-500 hover:bg-green-600 text-white flex items-center justify-center p-1 rounded-md">
-                    <span class="material-symbols-outlined">
-                        check
-                    </span>
-                </button>
+                <a href="{% url 'done' data.id %}">
+                    <button class="cursor-pointer bg-green-500 hover:bg-green-600 text-white flex items-center justify-center p-1 rounded-md">
+                        <span class="material-symbols-outlined">
+                            check
+                        </span>
+                    </button>
+                </a>
                 {% endif %}
-                <button class="cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-white flex items-center justify-center p-1 rounded-md">
-                    <span class="material-symbols-outlined">
-                        edit
-                    </span>
-                </button>
+                <a href="{% url 'form' data.id %}">
+                    <button class="cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-white flex items-center justify-center p-1 rounded-md">
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </button>
+                </a>
                 <a href="{% url 'delete' data.id %}">
                     <button class="cursor-pointer bg-red-500 hover:bg-red-600 text-white flex items-center justify-center p-1 rounded-md">
                         <span class="material-symbols-outlined">
