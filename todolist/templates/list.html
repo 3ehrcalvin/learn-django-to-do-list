@@ -35,11 +35,13 @@
                         edit
                     </span>
                 </button>
-                <button class="cursor-pointer bg-red-500 hover:bg-red-600 text-white flex items-center justify-center p-1 rounded-md">
-                    <span class="material-symbols-outlined">
-                        delete
-                    </span>
-                </button>
+                <a href="{% url 'delete' data.id %}">
+                    <button class="cursor-pointer bg-red-500 hover:bg-red-600 text-white flex items-center justify-center p-1 rounded-md">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                    </button>
+                </a>
             </td>
         </tr>
         {% endfor %}
