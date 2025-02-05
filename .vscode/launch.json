@@ -14,13 +14,12 @@
             "django": true,
             "autoStartBrowser": false,
             "program": "${workspaceFolder}/manage.py",
-            "pythonPath": "${workspaceFolder}/venv/Scripts/python"
         },
         {
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost:8080",
+            "url": "http://localhost:8000",
             "webRoot": "${workspaceFolder}"
         },
     ]
